@@ -1,4 +1,4 @@
-package com.school.studentmanagement.Student;
+package com.school.studentmanagement.dto;
 
 public class Student {
     private long id;
@@ -13,6 +13,7 @@ public class Student {
     private String gender;
 
     public Student () {
+
     }
 
     public Student(long id, String firstName, String lastName, int age, String dob, String nicNo, int grade, String telNo, String address, String gender) {
@@ -26,9 +27,6 @@ public class Student {
         this.telNo = telNo;
         this.address = address;
         this.gender = gender;
-    }
-
-    public Student(Student student) {
     }
 
     public long getId() {

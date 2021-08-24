@@ -1,5 +1,6 @@
-package com.school.studentmanagement.Student;
+package com.school.studentmanagement.services;
 
+import com.school.studentmanagement.dto.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,18 +18,20 @@ public class StudentService {
     public Student addNewStudent(Student student) {
         studentArrayList.add(student);
 
+        System.out.println(studentArrayList);
         return studentArrayList.get(studentArrayList.size()-1);
+
     }
 
-    public Student updateStudent(Student student) {
+    public Student updateStudent(Student student, int id) {
         try {
-            studentArrayList.set((int) student.getId() - 1, student);
+            studentArrayList.set(id-1, student);
 
         }catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
         }
 
-        return studentArrayList.get((int) student.getId() - 1);
+        return studentArrayList.get(id-1);
     }
 
     public void removeStudent(long id) {
