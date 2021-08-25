@@ -11,8 +11,11 @@ public class StudentService {
     ArrayList<Student> studentArrayList = new ArrayList<>();
 
     public ArrayList<Student> getStudents () {
-
         return studentArrayList;
+    }
+
+    public Student getSpecificStudent(int id) {
+        return studentArrayList.get(id -1);
     }
 
     public Student addNewStudent(Student student) {
