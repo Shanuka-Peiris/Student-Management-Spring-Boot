@@ -3,8 +3,11 @@ package com.school.studentmanagement.controller;
 import com.school.studentmanagement.dto.Student;
 import com.school.studentmanagement.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,15 +23,21 @@ public class StudentController {
     }
 
     // Returns all saved students
-    @GetMapping("/all")
-    public List<Student> getAll() {
-        return studentService.getStudents();
+    @GetMapping("/")
+    public ResponseEntity<List<Student>> getAll() {
+        ArrayList<Student> students = studentService.getStudents();
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getStudent(@PathVariable int id) {
+        return new ResponseEntity<>(studentService.getSpecificStudent(id), HttpStatus.OK);
     }
 
     // Returns the added student
-    @PostMapping
-    public Student addNewStudent(@RequestBody Student newStudent) {
-        return studentService.addNewStudent(newStudent);
+    @PostMapping("/")
+    public ResponseEntity<Student> addNewStudent(@RequestBody Student newStudent) {
+        return new ResponseEntity<>(studentService.addNewStudent(newStudent), HttpStatus.CREATED);
     }
 
     // Returns the updated student record
