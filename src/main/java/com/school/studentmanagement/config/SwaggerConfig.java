@@ -15,16 +15,11 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket (DocumentationType.SWAGGER_2)
-                .apiInfo(generateAPIInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.school.studentmanagement.controller"))
-                .paths(PathSelectors.any())
-                .build();
+        return new Docket(DocumentationType.SWAGGER_2).select()
+                .apis(RequestHandlerSelectors
+                .basePackage("com.school.studentmanagement"))
+                .paths(PathSelectors.any()).build();
     }
 
-    // Api Information
-    private ApiInfo generateAPIInfo() {
-        return new ApiInfo("Swagger demo", "Implementing Swagger with SpringBoot Application", "1.0.0", "", "", "", "");
-    }
+
 }
